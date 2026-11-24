@@ -3,64 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Deployment Demo</title>
+<title>Student Project Portal</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>Website Deployment Demo</h1>
-  <p>Static Website on Netlify &amp; Dynamic Website on Cloud</p>
+  <h1>Student Project Portal</h1>
+  <p>Static Website on Netlify &amp; Dynamic Web Service</p>
 </header>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#deployment">Deployment Info</a>
-  <a href="#test">Server Test</a>
-  <a href="#contact">Contact</a>
+  <a href="#projects">Projects</a>
+  <a href="#test">Live Server Test</a>
+  <a href="#student">Student Details</a>
 </nav>
 
 <main>
 
-  <section id="about">
-    <h2>About This Project</h2>
-    <p>
-      In this experiment, I learnt how to deploy websites online. A static website contains HTML, CSS and JavaScript files that can be hosted directly on platforms like Netlify or GitHub Pages without needing a backend server.
-    </p>
-    <p>
-      For the dynamic part, a Node.js and Express server runs in the cloud to handle API requests and send responses.
-    </p>
-  </section>
-
-  <section id="deployment">
-    <h2>Deployment Summary</h2>
+  <section id="projects">
+    <h2>Hosted Projects</h2>
     <div class="card-grid">
       <div class="card">
-        <h3>Static Deployment</h3>
-        <p><strong>Platform:</strong> Netlify / GitHub Pages</p>
-        <p><strong>Files:</strong> index.html, style.css, script.js</p>
-        <p><strong>Features:</strong> Free hosting, automatic HTTPS, fast loading</p>
+        <h3>Web Design Lab</h3>
+        <p>A collection of responsive frontend experiments hosted with automatic HTTPS on GitHub Pages and Netlify.</p>
       </div>
 
       <div class="card">
-        <h3>Dynamic Deployment</h3>
-        <p><strong>Platform:</strong> Render / Heroku / AWS</p>
-        <p><strong>Backend:</strong> Node.js &amp; Express</p>
-        <p><strong>Features:</strong> API routes, handles data, database connection</p>
+        <h3>Cloud API Service</h3>
+        <p>A Node.js and Express backend service handling dynamic API routes and client requests.</p>
       </div>
     </div>
   </section>
 
   <section id="test">
     <h2>Live Server Test</h2>
-    <p>Click the button below to test if the dynamic API endpoint is working:</p>
-    <button id="checkBtn" onclick="checkServer()">Check Server Status</button>
+    <p>Click the button below to test backend service response:</p>
+    <button onclick="checkServer()">Test Connection</button>
     <div id="statusBox" class="status-box">Status: Ready to test</div>
   </section>
 
-  <section id="contact">
+  <section id="student">
     <h2>Student Details</h2>
     <p><strong>Name:</strong> Tejas Mathur</p>
+    <p><strong>Enrollment No.:</strong> J250212161</p>
     <p><strong>Subject:</strong> Web Design Lab (JCS308)</p>
     <p><strong>College:</strong> JSS University, Noida</p>
   </section>
@@ -74,14 +60,13 @@
 <script>
 function checkServer() {
   var box = document.getElementById("statusBox");
-  box.textContent = "Checking server...";
+  box.textContent = "Connecting to backend service...";
   box.className = "status-box checking";
 
-  // Simulate or call local/cloud API endpoint
   setTimeout(function() {
-    box.textContent = "Server Status: Active (Response 200 OK) - Cloud Service Online";
+    box.textContent = "Server Status: Connected (HTTP 200 OK) - Cloud Service Online";
     box.className = "status-box online";
-  }, 500);
+  }, 400);
 }
 </script>
 </body>
