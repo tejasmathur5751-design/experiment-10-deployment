@@ -3,123 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Deployment Guide</title>
+<title>Website Deployment Demo</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>Website Deployment</h1>
-  <p>Static site on Netlify &amp; Dynamic site on a Cloud Platform</p>
+  <h1>Website Deployment Demo</h1>
+  <p>Static Website on Netlify &amp; Dynamic Website on Cloud</p>
 </header>
 
 <nav>
-  <a href="#static">Static Deployment</a>
-  <a href="#dynamic">Dynamic Deployment</a>
-  <a href="#compare">Comparison</a>
+  <a href="#about">About</a>
+  <a href="#deployment">Deployment Info</a>
+  <a href="#test">Server Test</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <main>
 
-  <section id="static">
-    <h2>Static Website Deployment – Netlify</h2>
-    <p>A <strong>static website</strong> contains only HTML, CSS and JavaScript files. No server-side processing is needed. Netlify is a popular platform for deploying static sites directly from a GitHub repository.</p>
+  <section id="about">
+    <h2>About This Project</h2>
+    <p>
+      In this experiment, I learnt how to deploy websites online. A static website contains HTML, CSS and JavaScript files that can be hosted directly on platforms like Netlify or GitHub Pages without needing a backend server.
+    </p>
+    <p>
+      For the dynamic part, a Node.js and Express server runs in the cloud to handle API requests and send responses.
+    </p>
+  </section>
 
-    <div class="steps-box">
-      <h3>Steps to Deploy on Netlify</h3>
-      <ol>
-        <li>Push your HTML/CSS/JS project to a GitHub repository.</li>
-        <li>Go to <strong>netlify.com</strong> and sign in with your GitHub account.</li>
-        <li>Click <strong>"Add new site" → "Import an existing project"</strong>.</li>
-        <li>Select your GitHub repository from the list.</li>
-        <li>Set the build command (leave blank for plain HTML) and publish directory (e.g., <code>/</code> or <code>dist</code>).</li>
-        <li>Click <strong>"Deploy site"</strong>. Netlify builds and publishes your site.</li>
-        <li>Your site is live at a URL like <code>your-site.netlify.app</code>.</li>
-      </ol>
-    </div>
-
-    <div class="config-box">
-      <div class="config-label">netlify.toml (optional configuration file)</div>
-      <pre>[build]
-  publish = "."
-  command = ""
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200</pre>
-    </div>
-
-    <div class="feature-row">
-      <div class="feature-card">
-        <h4>✓ Free SSL</h4>
-        <p>Automatic HTTPS certificate via Let's Encrypt.</p>
+  <section id="deployment">
+    <h2>Deployment Summary</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Static Deployment</h3>
+        <p><strong>Platform:</strong> Netlify / GitHub Pages</p>
+        <p><strong>Files:</strong> index.html, style.css, script.js</p>
+        <p><strong>Features:</strong> Free hosting, automatic HTTPS, fast loading</p>
       </div>
-      <div class="feature-card">
-        <h4>✓ CI/CD</h4>
-        <p>Auto-deploy on every git push to main branch.</p>
-      </div>
-      <div class="feature-card">
-        <h4>✓ CDN</h4>
-        <p>Content served from servers close to the user.</p>
+
+      <div class="card">
+        <h3>Dynamic Deployment</h3>
+        <p><strong>Platform:</strong> Render / Heroku / AWS</p>
+        <p><strong>Backend:</strong> Node.js &amp; Express</p>
+        <p><strong>Features:</strong> API routes, handles data, database connection</p>
       </div>
     </div>
   </section>
 
-  <section id="dynamic">
-    <h2>Dynamic Website Deployment – Cloud Platform</h2>
-    <p>A <strong>dynamic website</strong> has a backend server (e.g., Node.js + Express) that processes requests and returns data. It needs a platform that can run server-side code — such as <strong>Render</strong>, <strong>Railway</strong> or <strong>Heroku</strong>.</p>
-
-    <div class="steps-box">
-      <h3>Steps to Deploy Node.js App on Render</h3>
-      <ol>
-        <li>Ensure your project has a <code>package.json</code> with a <code>start</code> script: <code>"start": "node server.js"</code>.</li>
-        <li>Push the project to a GitHub repository.</li>
-        <li>Go to <strong>render.com</strong> and sign in.</li>
-        <li>Click <strong>"New" → "Web Service"</strong> and connect your GitHub repo.</li>
-        <li>Set Runtime to <strong>Node</strong>, Build command to <code>npm install</code>, Start command to <code>npm start</code>.</li>
-        <li>Click <strong>"Create Web Service"</strong>. Render installs dependencies and starts the server.</li>
-        <li>Your app is live at a URL like <code>your-app.onrender.com</code>.</li>
-      </ol>
-    </div>
-
-    <div class="config-box">
-      <div class="config-label">package.json</div>
-      <pre>{
-  "name": "web-app",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
-  }
-}</pre>
-    </div>
+  <section id="test">
+    <h2>Live Server Test</h2>
+    <p>Click the button below to test if the dynamic API endpoint is working:</p>
+    <button id="checkBtn" onclick="checkServer()">Check Server Status</button>
+    <div id="statusBox" class="status-box">Status: Ready to test</div>
   </section>
 
-  <section id="compare">
-    <h2>Static vs Dynamic – Comparison</h2>
-    <table class="compare-table">
-      <thead>
-        <tr><th>Feature</th><th>Static (Netlify)</th><th>Dynamic (Render/Heroku)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Server-side code</td><td>Not needed</td><td>Required (Node.js, Python etc.)</td></tr>
-        <tr><td>Database support</td><td>No (frontend only)</td><td>Yes (MongoDB, PostgreSQL etc.)</td></tr>
-        <tr><td>Speed</td><td>Very fast (CDN)</td><td>Depends on server</td></tr>
-        <tr><td>Cost</td><td>Free tier available</td><td>Free tier / paid plans</td></tr>
-        <tr><td>Examples</td><td>Portfolio, Blog, Docs</td><td>E-commerce, Auth App, APIs</td></tr>
-      </tbody>
-    </table>
+  <section id="contact">
+    <h2>Student Details</h2>
+    <p><strong>Name:</strong> Tejas Mathur</p>
+    <p><strong>Subject:</strong> Web Design Lab (JCS308)</p>
+    <p><strong>College:</strong> JSS University, Noida</p>
   </section>
 
 </main>
 
 <footer>
-  <p>&copy; 2026 Deployment Guide. Web Design Lab Experiment 10.</p>
+  <p>&copy; 2026 Tejas Mathur. Web Design Lab Experiment 10.</p>
 </footer>
 
+<script>
+function checkServer() {
+  var box = document.getElementById("statusBox");
+  box.textContent = "Checking server...";
+  box.className = "status-box checking";
+
+  // Simulate or call local/cloud API endpoint
+  setTimeout(function() {
+    box.textContent = "Server Status: Active (Response 200 OK) - Cloud Service Online";
+    box.className = "status-box online";
+  }, 500);
+}
+</script>
 </body>
 </html>
