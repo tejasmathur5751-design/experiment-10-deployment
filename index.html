@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Deployment Guide</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Website Deployment</h1>
+  <p>Static site on Netlify &amp; Dynamic site on a Cloud Platform</p>
+</header>
+
+<nav>
+  <a href="#static">Static Deployment</a>
+  <a href="#dynamic">Dynamic Deployment</a>
+  <a href="#compare">Comparison</a>
+</nav>
+
+<main>
+
+  <section id="static">
+    <h2>Static Website Deployment – Netlify</h2>
+    <p>A <strong>static website</strong> contains only HTML, CSS and JavaScript files. No server-side processing is needed. Netlify is a popular platform for deploying static sites directly from a GitHub repository.</p>
+
+    <div class="steps-box">
+      <h3>Steps to Deploy on Netlify</h3>
+      <ol>
+        <li>Push your HTML/CSS/JS project to a GitHub repository.</li>
+        <li>Go to <strong>netlify.com</strong> and sign in with your GitHub account.</li>
+        <li>Click <strong>"Add new site" → "Import an existing project"</strong>.</li>
+        <li>Select your GitHub repository from the list.</li>
+        <li>Set the build command (leave blank for plain HTML) and publish directory (e.g., <code>/</code> or <code>dist</code>).</li>
+        <li>Click <strong>"Deploy site"</strong>. Netlify builds and publishes your site.</li>
+        <li>Your site is live at a URL like <code>your-site.netlify.app</code>.</li>
+      </ol>
+    </div>
+
+    <div class="config-box">
+      <div class="config-label">netlify.toml (optional configuration file)</div>
+      <pre>[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200</pre>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-card">
+        <h4>✓ Free SSL</h4>
+        <p>Automatic HTTPS certificate via Let's Encrypt.</p>
+      </div>
+      <div class="feature-card">
+        <h4>✓ CI/CD</h4>
+        <p>Auto-deploy on every git push to main branch.</p>
+      </div>
+      <div class="feature-card">
+        <h4>✓ CDN</h4>
+        <p>Content served from servers close to the user.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dynamic">
+    <h2>Dynamic Website Deployment – Cloud Platform</h2>
+    <p>A <strong>dynamic website</strong> has a backend server (e.g., Node.js + Express) that processes requests and returns data. It needs a platform that can run server-side code — such as <strong>Render</strong>, <strong>Railway</strong> or <strong>Heroku</strong>.</p>
+
+    <div class="steps-box">
+      <h3>Steps to Deploy Node.js App on Render</h3>
+      <ol>
+        <li>Ensure your project has a <code>package.json</code> with a <code>start</code> script: <code>"start": "node server.js"</code>.</li>
+        <li>Push the project to a GitHub repository.</li>
+        <li>Go to <strong>render.com</strong> and sign in.</li>
+        <li>Click <strong>"New" → "Web Service"</strong> and connect your GitHub repo.</li>
+        <li>Set Runtime to <strong>Node</strong>, Build command to <code>npm install</code>, Start command to <code>npm start</code>.</li>
+        <li>Click <strong>"Create Web Service"</strong>. Render installs dependencies and starts the server.</li>
+        <li>Your app is live at a URL like <code>your-app.onrender.com</code>.</li>
+      </ol>
+    </div>
+
+    <div class="config-box">
+      <div class="config-label">package.json</div>
+      <pre>{
+  "name": "web-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}</pre>
+    </div>
+  </section>
+
+  <section id="compare">
+    <h2>Static vs Dynamic – Comparison</h2>
+    <table class="compare-table">
+      <thead>
+        <tr><th>Feature</th><th>Static (Netlify)</th><th>Dynamic (Render/Heroku)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Server-side code</td><td>Not needed</td><td>Required (Node.js, Python etc.)</td></tr>
+        <tr><td>Database support</td><td>No (frontend only)</td><td>Yes (MongoDB, PostgreSQL etc.)</td></tr>
+        <tr><td>Speed</td><td>Very fast (CDN)</td><td>Depends on server</td></tr>
+        <tr><td>Cost</td><td>Free tier available</td><td>Free tier / paid plans</td></tr>
+        <tr><td>Examples</td><td>Portfolio, Blog, Docs</td><td>E-commerce, Auth App, APIs</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Deployment Guide. Web Design Lab Experiment 10.</p>
+</footer>
+
+</body>
+</html>
